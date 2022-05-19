@@ -8,11 +8,11 @@ body {
 .main {
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: center;
   height: 100%;
   padding: 0 16px;
   background: url('http://image.wufazhuce.com/FsT8f0U1LqlUtdljfKRR8SOMzGH3') no-repeat center center;
-  background-size: cover;
+  background-size: cover;  
   color: #fff;
   font-family: '微软雅黑';
 }
@@ -34,5 +34,8 @@ body {
   font-size: 19px;
 }
 .one-words {
+  font-size: 16px;
+}
+.words{
   font-size: 16px;
 }

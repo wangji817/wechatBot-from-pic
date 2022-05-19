@@ -1,8 +1,4 @@
-# WeChat-bot
-微信定时给指定用户发送提醒消息
-wechat模块需要手动安装
-
-```
+.
 |-- README.md
 |-- WechatIMG.png
 |-- app.js
@@ -28,4 +24,5 @@ wechat模块需要手动安装
     |-- js
     |   `-- index.js
     `-- template.pug
-```
+
+7 directories, 18 files
