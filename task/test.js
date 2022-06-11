@@ -23,25 +23,3 @@ function startTask() {
   global.bot.start()
 }
 startTask()
-
-
-
-
-
-
-// 书单海报B+C接口名：bksheetPoster
-
-// 数据格式：
-// {
-//     URL:"",传空
-//     bigLogo:"",传空
-//     contentType:"xx",
-//     title:"书单标题",
-//     bookList:["图书列表，后端需返回所有图书信息"],新增字段
-//     description:"书单描述",
-//     userShowName:"创建者昵称",新增字段
-//     headImgUrl:"创建者头像",新增字段        
-//     tagNameList:["标签列表"],新增
-//     qrPicUrl:"二维码",新增
-//     style:"样式类型" 可能是ues变量控制展示类型    
-// }
