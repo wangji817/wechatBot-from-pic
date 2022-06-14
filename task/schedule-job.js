@@ -28,7 +28,7 @@ async function echJob(bot, TIME, words, type, newWords) {
 
       if (type === "2") {
         const msg = newWords[Math.floor(Math.random() * newWords.length)];
-        words = msg;        
+        words = msg;
       }
       console.log("data:", oneImg, oneWords, words);
       // 关闭浏览器
@@ -40,10 +40,7 @@ async function echJob(bot, TIME, words, type, newWords) {
       await getTemp()
       // 发消息               
       if (type === "2") {
-        config.ALIAS.map((item, index) => {
-          console.log(item, index);
-          wxSay(bot, item);
-        });
+        wxSay(bot);
       } else if (type === "4") {
         process.exit(0);
       } else {
@@ -55,20 +52,21 @@ async function echJob(bot, TIME, words, type, newWords) {
   })
 }
 
-async function wxSay(bot, item) {  
+async function wxSay(bot) {
   const msg = FileBox.fromFile(config.TEP_PIC_NAME)
-  bot.say(msg);
-  const weiba = await bot.Contact.find({ name: item }) || await bot.Contact.find({ alias: item })  
-  weiba.say(msg);
+  const Night = await bot.Contact.find({ name: 'Night' }) || await bot.Contact.find({ alias: 'Night' })
+  const Silence = await bot.Contact.find({ name: 'Silence' }) || await bot.Contact.find({ alias: 'Silence' })
+  await Night.say(msg);
+  await Silence.say(msg);
 }
 
 async function startScheduleJob(bot) {
   // 每日天气
   // echJob(bot,config.GETUP_TIME,"","1");
 
-  // 喝水提醒
+  // 喝水提醒  
   const drinks = config.DRINK_TIME;
-  drinks.map((item, index) => {
+  drinks.map(item => {
     echJob(bot, item.time, '', "2", haha[item.type]);
   })
 
