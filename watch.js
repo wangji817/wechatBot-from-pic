@@ -1,27 +1,28 @@
 const child_process = require('child_process');
     
-function start() {
+async function start() {
     if (typeof start !== 'string') {
-        console.log('Has none file. like this: start("app.js")');
+        console.log('开始程序 pm2 start app.js');
     }
-
-    console.log('Master process is running.');
-
-    var proc = child_process.spawn('node', ['app.js']);
-
-    proc.stdout.on('data', function (data) {
-        console.log(data.toString());
+    
+    var proc = child_process.exec('pm2 start app.js', (error, stdout, stderr) => {
+        if (error) {
+            throw error;
+        }
     });
-
-    proc.stderr.on('data', function (data) {
-        console.log(data.toString());
-    });
-
-    // 监测退出事件，删除原进程并重启新进程
-    proc.on('exit', function (code) {
-        console.log('child process exited with code ' + code);
-        delete(proc);
-        setTimeout(start, 5000);
-    });
+    setTimeout(() => { stop(); }, 18000 * 1000);
 }
+
+async function stop() {
+    if (typeof stop !== 'string') {
+        console.log('停止程序 stop ');
+    }    
+    var proc = child_process.exec('pm2 stop app.js', (error, stdout, stderr) => {
+        if (error) {
+            throw error;
+        }
+    });
+    setTimeout(() => { start(); }, 1000);
+}
+
 start();
