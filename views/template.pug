@@ -11,8 +11,9 @@ html
       div.content
         p.weather
           span.weather-temp= weaTemp
-          span.weather-status(style=`background-image: url(${weaImg})`)= weaStatus
-        p.weather-tips= weaTips
-        p.date= date
-        p.one-words= oneWords
-        p.words= words
+          span.weather-status(style=`background-image: url(${weaImg})`)=weaStatus
+        p.weather-tips.font16= weaTips
+        p.date.font16=date
+        p.one-title.font16 每日一句
+        p.one-words.font16=oneWords
+        p.words.font16=words
