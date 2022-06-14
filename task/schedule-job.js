@@ -1,8 +1,9 @@
 const schedule = require('node-schedule')
 const puppeteer = require('puppeteer')
-// const { FileBox } = require('file-box')
-const { FileBox } = require('wechaty')
+const { FileBox } = require('file-box')
+// const FileBox = require('wechaty').FileBox;
 const config = require('../config')
+const haha = require('../config/haha.json');
 const getOneData = require('./get-data-one')
 const getWeatherData = require('./get-data-weather')
 const getTemp = require('./get-data-temp')
@@ -11,7 +12,7 @@ const getTemp = require('./get-data-temp')
  * 开始定时任务
  * @param {Objcet} bot 微信机器人
  */
-async function echJob(bot, TIME, words, type) {
+async function echJob(bot, TIME, words, type, newWords) {
   schedule.scheduleJob(TIME, async () => {
     try {
       // 启动浏览器
@@ -25,21 +26,23 @@ async function echJob(bot, TIME, words, type) {
       await pageOne.goto(config.ONE_HOST)
       let { oneImg, oneWords } = await getOneData(pageOne)
 
+      if (type === "2") {
+        const msg = newWords[Math.floor(Math.random() * newWords.length)];
+        words = msg;        
+      }
       console.log("data:", oneImg, oneWords, words);
       // 关闭浏览器
       await browser.close()
       // 把取到的值赋给变量tempData
-      let _words = 
       global.tempData = { weaTips, weaTemp, weaImg, weaStatus, oneImg, oneWords, words }
+      // console.log(global.tempData);
       // 重新启动一个浏览器，并截图
       await getTemp()
-      // 发消息   
-      const login = bot.logonoff();
-      console.log(login, type);
+      // 发消息               
       if (type === "2") {
         config.ALIAS.map((item, index) => {
-          const msg = item[Math.floor(Math.random() * item.length)];
-          wxSay(bot, msg);
+          console.log(item, index);
+          wxSay(bot, item);
         });
       } else if (type === "4") {
         process.exit(0);
@@ -47,14 +50,15 @@ async function echJob(bot, TIME, words, type) {
         bot.say(words);
       }
     } catch (err) {
-      console.log('错误：\n', err)
+      console.log('错误：', err.name, err.message);
     }
   })
 }
 
-async function wxSay(bot, item) {
-  const weiba = await bot.Contact.find({ name: item }) || await bot.Contact.find({ alias: item })
+async function wxSay(bot, item) {  
   const msg = FileBox.fromFile(config.TEP_PIC_NAME)
+  bot.say(msg);
+  const weiba = await bot.Contact.find({ name: item }) || await bot.Contact.find({ alias: item })  
   weiba.say(msg);
 }
 
@@ -63,14 +67,14 @@ async function startScheduleJob(bot) {
   // echJob(bot,config.GETUP_TIME,"","1");
 
   // 喝水提醒
-  // const drinks = config.DRINK_TIME;
-  // drinks.map((index, item) => {
-  //   echJob(bot, item.time, item.type, "2");
-  // })
+  const drinks = config.DRINK_TIME;
+  drinks.map((item, index) => {
+    echJob(bot, item.time, '', "2", haha[item.type]);
+  })
 
   //间隔1分钟监听一次机器人登录状态  
   // echJob(bot, config.EVERYDAYTIME, "咚咚，还在吗", "3");
-  // echJob(bot, config.EVERYDAYRESETTIME, "重启进程", "4");
+  // echJob(bot, config.EVERYDAYRESETTIME, "重启进程", "4");  
 }
 
 module.exports = startScheduleJob
