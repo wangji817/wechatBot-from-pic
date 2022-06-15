@@ -1,8 +1,7 @@
 const { WechatyBuilder } = require('wechaty');
 const generateQrcode = require('qrcode-terminal')
 const startScheduleJob = require('./schedule-job')
-const { FileBox } = require('file-box')
-const config = require('../config')
+
 
 /**
  * 登录微信，并开始执行定时任务
@@ -23,7 +22,7 @@ function startTask() {
   })
   bot.on('login', user => {
     console.log(`当前登录的用户是：${user}`);
-    startScheduleJob(bot);    
+    startScheduleJob(bot);
   })
   bot.on('message', message => console.log(`Message: ${message}`)).start()
 }

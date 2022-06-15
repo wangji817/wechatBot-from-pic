@@ -1,6 +1,6 @@
 const path = require('path')
 const puppeteer = require('puppeteer')
-const config = require('../config')
+const config = require('../config/index_pic')
 
 async function getTemplate() {
   const browser = await puppeteer.launch({

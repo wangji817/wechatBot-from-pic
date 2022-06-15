@@ -22,6 +22,7 @@ body {
 
 .content {
   height: 100%;
+  position: relative;
 }
 .weather-temp {
   font-size: 48px;
@@ -36,10 +37,16 @@ body {
 .font16{
   font-size: 16px;
 }
-.date {
+.font19{
   font-size: 19px;
 }
 .one-title{
-  padding-top: 60vh;
-  
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+.bottom{
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
+  left: 0;
 }
