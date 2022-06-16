@@ -3,13 +3,22 @@
 
 wechat模块需要手动安装，需要的环境
 
-[![node](https://img.shields.io/node/v/wechaty.svg?maxAge=604800)](https://nodejs.org/) ![](https://img.shields.io/static/v1?label=&message=pm2&color=orange)
+[![node](https://img.shields.io/node/v/wechaty.svg)](https://nodejs.org/) ![](https://img.shields.io/static/v1?label=&message=pm2&color=orange)
+
+### 推荐yarn或cnpm安装
 
 cnpm install child_process express mkdirp node-schedule pug puppeteer qrcode-terminal wechaty wechaty-puppet-puppeteer
 
 or
 
 yarn add child_process express mkdirp node-schedule pug puppeteer qrcode-terminal wechaty wechaty-puppet-puppeteer file-box
+
+### 步骤
+```
+1、修改config/下部分配置项
+2、修改task/schedule-job.js中部分代码
+3、控制台输入pm2 start watch.js，等待微信二维码出现，扫描进入即可
+```
 
 新版兼容web wechaty设置
 
