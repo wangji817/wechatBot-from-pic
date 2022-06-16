@@ -42,6 +42,7 @@ async function getShot() {
   global.shotData = {
     oneJson: {}
   }
+  //xxx为某个获取每日图片的接口地址，需要替换data下数据结构
   await axios.get('xxx', { params: { 'vt': '9' } }).then(async (data) => {
     // 启动浏览器
     const browser = await puppeteer.launch()
