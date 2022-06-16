@@ -17,9 +17,7 @@ const axios = require('axios')
  */
 async function echJob(bot, TIME, words, type, newWords) {
   schedule.scheduleJob(TIME, async () => {
-    try {
-      // 把取到的值赋给变量tempData
-      // global.tempData = { weaTips, weaTemp, weaImg, weaStatus, oneImg, oneWords, words }
+    try {            
       //获取整个页面数据
       await getShot();
       // 重新启动一个浏览器，并截图

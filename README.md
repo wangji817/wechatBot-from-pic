@@ -7,11 +7,11 @@ wechat模块需要手动安装，需要的环境
 
 ### 推荐yarn或cnpm安装
 
-cnpm install child_process express mkdirp node-schedule pug puppeteer qrcode-terminal wechaty wechaty-puppet-puppeteer
+cnpm install
 
 or
 
-yarn add child_process express mkdirp node-schedule pug puppeteer qrcode-terminal wechaty wechaty-puppet-puppeteer file-box
+yarn
 
 ### 步骤
 ```
