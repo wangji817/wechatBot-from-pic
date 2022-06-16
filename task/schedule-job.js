@@ -7,7 +7,7 @@ const config2 = require('../config/index_text')
 const haha = require('../config/haha.json');
 const getOneData = require('./get-data-one')
 const getWeatherData = require('./get-data-weather')
-const getTemp = require('./get-data-temp')
+const { getShotpng } = require('./get-data-temp')
 const utils = require('../utils')
 const axios = require('axios')
 
@@ -23,7 +23,7 @@ async function echJob(bot, TIME, words, type, newWords) {
       //获取整个页面数据
       await getShot();
       // 重新启动一个浏览器，并截图
-      await getTemp.getShotpng()
+      await getShotpng()
       // 发消息               
       if (type === "2") {
         wxSay(bot);
