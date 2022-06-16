@@ -3,9 +3,7 @@
 
 wechat模块需要手动安装
 
-[![node](https://img.shields.io/node/v/wechaty.svg?maxAge=604800)](https://nodejs.org/)
-
-!(https://img.shields.io/static/v1?label=&message=pm2&color=orange)
+[![node](https://img.shields.io/node/v/wechaty.svg?maxAge=604800)](https://nodejs.org/) !(https://img.shields.io/static/v1?label=&message=pm2&color=orange)
 
 cnpm install child_process express mkdirp node-schedule pug puppeteer qrcode-terminal wechaty wechaty-puppet-puppeteer
 
