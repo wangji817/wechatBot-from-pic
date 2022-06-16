@@ -23,10 +23,10 @@ yarn add child_process express mkdirp node-schedule pug puppeteer qrcode-termina
 新版兼容web wechaty设置
 
 ```
-	npm install qrcode-terminal --save
-	npm install wechaty 
-	npm install wechaty-puppet-wechat --save // 这个依赖是关键
-	export WECHATY_PUPPET=wechaty-puppet-wechat // 这里也是关键，需要配置你使用的puppet
+npm install qrcode-terminal --save
+npm install wechaty 
+npm install wechaty-puppet-wechat --save // 这个依赖是关键
+export WECHATY_PUPPET=wechaty-puppet-wechat // 这里也是关键，需要配置你使用的puppet
 ```
 
 目录
