@@ -16,4 +16,18 @@ async function getTemplate() {
   await browser.close()
 }
 
-module.exports = getTemplate
+async function getShotpng() {
+  const browser = await puppeteer.launch({
+    defaultViewport: {
+      width: 375,
+      height: 667
+    },
+  })
+  const page = await browser.newPage()
+  await page.goto(config.SHOT_HOST)
+  await page.waitForTimeout(300);
+  await page.screenshot({ path: path.join(config.TEP_PIC_NAME) })
+  await browser.close()
+}
+
+module.exports = { getTemplate, getShotpng }

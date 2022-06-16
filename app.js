@@ -24,6 +24,11 @@ app.get('/temp', (req, res) => {
   res.end();
 })
 
+app.get('/shot', async (req, res) => {  
+  res.render('shot', global.shotData);
+  res.end();
+})
+   
 app.listen(3000, async () => {
   console.log('Example app listening on port 3000!')
   task()

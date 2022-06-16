@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1, user-scalable=no")
+    title 网页截图模板
+    link(rel="stylesheet" href="./css/shot.css")
+
+  body
+    div.main      
+      div.bg-cover
+        img.bg-img(src=`${oneJson.dayShowImageUrl}` alt=`${oneJson.dayTime}`)
+        div.one-words
+          div.weather
+            span.weather-temp=weaTemp
+            span.weather-status(style=`background: url(${weaImg}) no-repeat left center;background-size: 23px;`)=weaStatus
+          div.weather-tips.font16=weaTips
+          div.one-desc.font16=oneWords
